@@ -23,6 +23,27 @@ const data = [
         moff calamari mon obi-wan. Solo grievous lando coruscant. Jinn darth palpatine obi-wan mon.`
   },
   {
+    title: 'Lambda School Students: "We\'re the best!"',
+    date: 'Nov 5th, 2018',
+    firstParagraph: `Lucas ipsum dolor sit amet ben twi'lek padmé darth darth darth moff hutt organa twi'lek. Ben amidala secura skywalker lando
+        moff wicket tatooine luke.Solo wampa wampa calrissian yoda moff.Darth grievous darth gonk darth hutt.Darth baba skywalker
+        watto fett jango maul han.Mon ewok sidious sidious lando kenobi grievous gamorrean solo.Yoda wedge utapau darth calamari.
+        Hutt calamari darth jabba.Darth dooku amidala organa moff.Boba darth binks solo hutt skywalker dantooine skywalker.Qui - gonn
+        jar twi'lek jinn leia jango skywalker mon.`,
+
+    secondParagraph: `Grievous fett calamari anakin skywalker hutt.Alderaan darth kenobi darth r2- d2
+        windu mothma.Sidious darth calamari moff.Wampa mothma sith wedge solo mara.Darth gonk maul sith moff chewbacca palpatine
+        mace amidala.C - 3po solo skywalker anakin yoda leia.Maul wampa bespin watto jade ewok darth jabba.Lando dantooine moff
+        k - 3po dantooine luke.Fisto mandalore darth wedge c - 3p0 ahsoka.Secura moff palpatine fett.Anakin sith darth darth.Moff
+        solo leia ben ponda jade.Binks jango aayla skywalker skywalker cade.Mustafar darth ventress anakin watto.Yavin jawa sebulba
+        owen jinn tatooine sith organa.`,
+
+    thirdParagraph: `Dagobah hutt jawa leia calamari ventress skywalker yoda. Binks wicket hutt coruscant sidious
+        naboo ackbar tatooine. Hutt lars padmé darth. Maul solo darth darth jabba qui-gon chewbacca darth maul. Moff baba wicket
+        han. C-3po antilles moff qui-gon ahsoka aayla dooku amidala. Palpatine droid amidala droid k-3po twi'lek padmé wookiee. Leia
+        moff calamari mon obi-wan. Solo grievous lando coruscant. Jinn darth palpatine obi-wan mon.`
+  },
+  {
     title: 'Javascript and You, ES6',
     date: 'May 7th, 2019',
     firstParagraph: `Alohamora wand elf parchment, Wingardium Leviosa hippogriff, house dementors betrayal. Holly, Snape centaur portkey ghost
@@ -102,9 +123,70 @@ const data = [
   Hint: You will need to use createElement more than once here!
 
   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each peice of the data object above.
+  // 
+                                    myWork
+********************************************************************* */
 
+//  problem 1
+document.addEventListener('DOMContentLoaded', (event) => {
+
+
+
+const articles = document.querySelector('.articles');
+
+data.forEach(myDataA => {
+  articles.appendChild(createComponent(myDataA))
+})
+})
+
+
+function createComponent(myData) {
+  const articleA = document.createElement('div');
+  const articleB = document.createElement('h2');
+  const articleC = document.createElement('p');
+  const articleD = document.createElement('p');
+  const articleE = document.createElement('p');
+  const articleF = document.createElement('p');
+  const articleG = document.createElement('span');
+  
+
+
+  articleA.appendChild(articleB);
+  articleA.appendChild(articleC);
+  articleA.appendChild(articleD);
+  articleA.appendChild(articleE);
+  articleA.appendChild(articleF);
+  articleA.appendChild(articleG);
+
+
+
+  articleA.classList.add('article');
+  
+  articleC.classList.add('date');
+  articleG.classList.add('expandButton');
+  
+  articleB.textContent = myData.title;
+  articleC.textContent = myData.date;
+  articleD.textContent = myData.firstParagraph;
+  articleE.textContent = myData.secondParagraph;
+  articleF.textContent = myData.thirdParagraph;
+  articleG.textContent = "open me";
+
+
+// step2
+articleG.addEventListener('click', (event) => {
+  articleA.classList.toggle('article-open')
+  // alert("hello")
+
+})
+return articleA;
+}
+
+/*
   Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
 
+
+ 
   Step 3: return the entire component.
 
   Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
