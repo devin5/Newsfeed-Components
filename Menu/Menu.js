@@ -1,69 +1,39 @@
 /* This is the data we will be using, study it but don't change anything, yet. */
 
 let menuItems = [
-  'Students',
-  'Faculty',
+  "Students",
+  "Faculty",
   "What's New",
-  'Tech Trends',
-  'Music',
-  'Log Out'
+  "Tech Trends",
+  "Music",
+  "Log Out"
 ];
 
+document.addEventListener("DOMContentLoaded", event => {
+  const selector = document.querySelector(".header");
+  selector.appendChild(createMenuItem(menuItems));
+});
 
+function createMenuItem(arr) {
+  const menuA = document.createElement("div");
+  const menuB = document.createElement("ul");
 
-document.addEventListener('DOMContentLoaded', (event) => {
-  const selector = document.querySelector('.menu-button')
-
- selector.appendChild(createMenuItem(menuItems)) 
-
-
-  })
-
-
-function createMenuItem(arr){
-  const selector = document.querySelector('.menu-button')
-  const menuA = 
-  document.createElement('div');
-  const menuB = 
-  document.createElement('ul');
-  
   arr.forEach(data => {
-    
-    var myLi = document.createElement('li')
-    // console.log("data: " + data); 
-    //alert("datA: " + data); 
-    //myLi.textContent = data
-
-    var myLiText = document.createTextNode(data);
-    myLi.appendChild(myLiText); 
-    //myLi.innerHTML = data
-    menuB.appendChild(myLi)
-  })
+    var myLi = document.createElement("li");
+    myLi.textContent = data;
+    menuB.appendChild(myLi);
+  });
 
   menuA.appendChild(menuB);
+  menuA.classList.add("menu");
 
+  const selector2 = document.querySelector(".menu-button");
+  selector2.addEventListener("click", event => {
+    menuA.classList.toggle("menu--open");
+  });
 
-  menuA.classList.add('menu');
-  
-
-
-
-selector.addEventListener('click', (event) => {
-  // alert("menu selector"); 
-  selector.classList.add('menu--open')
-  selector.classList.add('menu')
-
-  
-})
-
-
-
-  return menuA
-  
+  return menuA;
 }
-
-
-
 
 /* 
 
